@@ -10,4 +10,5 @@ public class HealthCheckService {
     public HealthCheckService(HealthCheckController healthCheckController) {
         this.healthCheckController = healthCheckController;
     }
+
 }
