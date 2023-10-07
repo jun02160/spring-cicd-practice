@@ -25,8 +25,4 @@ public class HealthCheckController {
         return ResponseEntity.ok("OK");
     }
 
-    @GetMapping("/v3")
-    public ResponseEntity<HealthCheckResponse> healthCheckV3() {
-        return ResponseEntity.ok(new HealthCheckResponse("OK"));
-    }
 }
