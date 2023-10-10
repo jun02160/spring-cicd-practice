@@ -1,0 +1,12 @@
+package com.example.seminar.repository;
+
+import com.example.seminar.domain.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MemberJpaRepository extends JpaRepository<Member, Long> {
+
+    default Member findMemberByIdOrThrow(Long id) {
+        return findById(id).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 회원입니다."));
+    }
+}
