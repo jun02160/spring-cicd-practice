@@ -15,5 +15,4 @@ public enum Part {
     DESIGN("디자인");
 
     private final String name;
-
 }

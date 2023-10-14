@@ -7,11 +7,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import static lombok.AccessLevel.*;
-
 @Entity
 @Getter
-@NoArgsConstructor(access = PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +26,10 @@ public class Member {
         this.name = name;
         this.nickname = nickname;
         this.age = age;
+        this.sopt = sopt;
+    }
+
+    public void updateSOPT(SOPT sopt) {
         this.sopt = sopt;
     }
 }

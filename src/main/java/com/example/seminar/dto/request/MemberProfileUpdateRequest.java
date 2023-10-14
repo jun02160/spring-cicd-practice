@@ -1,8 +1,11 @@
 package com.example.seminar.dto.request;
 
-public record MemberProfileUpdateRequest(
-        String name,
-        String nickname,
-        int age
-) {
+import com.example.seminar.domain.Part;
+import lombok.Data;
+
+@Data
+public class MemberProfileUpdateRequest {
+    private int generation;
+    private Part part;
 }
+

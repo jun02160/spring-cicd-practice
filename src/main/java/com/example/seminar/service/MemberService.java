@@ -2,7 +2,9 @@ package com.example.seminar.service;
 
 
 import com.example.seminar.domain.Member;
+import com.example.seminar.domain.SOPT;
 import com.example.seminar.dto.request.MemberCreateRequest;
+import com.example.seminar.dto.request.MemberProfileUpdateRequest;
 import com.example.seminar.dto.response.MemberGetResponse;
 import com.example.seminar.repository.MemberJpaRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -30,7 +32,7 @@ public class MemberService {
     }
 
     public MemberGetResponse getMemberByIdV3(Long id) {
-        return MemberGetResponse.of(memberJpaRepository.findMemberByIdOrThrow(id));
+        return MemberGetResponse.of(memberJpaRepository.findByIdOrThrow(id));
     }
 
     public List<MemberGetResponse> getMembers() {
@@ -39,7 +41,7 @@ public class MemberService {
                 .map(MemberGetResponse::of)
                 .collect(Collectors.toList());
     }
-
+    @Transactional
     public String create(MemberCreateRequest request) {
          Member member =  memberJpaRepository.save(Member.builder()
                  .name(request.getName())
@@ -50,7 +52,15 @@ public class MemberService {
          return member.getId().toString();
     }
 
-    public void updateSopt() {
+    @Transactional
+    public void updateSOPT(Long memberId, MemberProfileUpdateRequest request) {
+        Member member = memberJpaRepository.findByIdOrThrow(memberId);
+        member.updateSOPT(new SOPT(request.getGeneration(), request.getPart()));
+    }
 
+    @Transactional
+    public void deleteMember(Long memberId) {
+        Member member = memberJpaRepository.findByIdOrThrow(memberId);
+        memberJpaRepository.delete(member);
     }
 }

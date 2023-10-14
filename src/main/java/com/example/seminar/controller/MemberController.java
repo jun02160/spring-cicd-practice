@@ -2,9 +2,11 @@ package com.example.seminar.controller;
 
 
 import com.example.seminar.dto.request.MemberCreateRequest;
+import com.example.seminar.dto.request.MemberProfileUpdateRequest;
 import com.example.seminar.dto.response.MemberGetResponse;
 import com.example.seminar.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +21,15 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("/{memberId}")
-    public ResponseEntity<MemberGetResponse> getMemberProfile(@PathVariable Long memberId) {
+    public ResponseEntity<MemberGetResponse> getMemberProfileV1(@PathVariable Long memberId) {
         return ResponseEntity.ok(memberService.getMemberByIdV2(memberId));
-
     }
+
+    @GetMapping(value = "/{memberId}/v2", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MemberGetResponse> getMemberProfileV2(@PathVariable Long memberId) {
+        return ResponseEntity.ok(memberService.getMemberByIdV2(memberId));
+    }
+
 
     @PostMapping
     public ResponseEntity<Void> createMember(@RequestBody MemberCreateRequest request) {
@@ -36,13 +43,14 @@ public class MemberController {
     }
 
     @PatchMapping("/{memberId}")
-    public ResponseEntity<Void> updateMemberSoptInfo() {
+    public ResponseEntity<Void> updateMemberSoptInfo(@PathVariable Long memberId, @RequestBody MemberProfileUpdateRequest request) {
+        memberService.updateSOPT(memberId, request);
+        return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteMember() {
-
+    @DeleteMapping("/{memberId}")
+    public ResponseEntity deleteMember(@PathVariable Long memberId) {
+        memberService.deleteMember(memberId);
+        return ResponseEntity.noContent().build();
     }
-
-
 }
