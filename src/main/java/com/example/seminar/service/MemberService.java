@@ -3,8 +3,8 @@ package com.example.seminar.service;
 
 import com.example.seminar.domain.Member;
 import com.example.seminar.domain.SOPT;
-import com.example.seminar.dto.request.MemberCreateRequest;
-import com.example.seminar.dto.request.MemberProfileUpdateRequest;
+import com.example.seminar.dto.request.member.MemberCreateRequest;
+import com.example.seminar.dto.request.member.MemberProfileUpdateRequest;
 import com.example.seminar.dto.response.MemberGetResponse;
 import com.example.seminar.repository.MemberJpaRepository;
 import jakarta.persistence.EntityNotFoundException;

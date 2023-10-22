@@ -1,8 +1,8 @@
 package com.example.seminar.controller;
 
 
-import com.example.seminar.dto.request.MemberCreateRequest;
-import com.example.seminar.dto.request.MemberProfileUpdateRequest;
+import com.example.seminar.dto.request.member.MemberCreateRequest;
+import com.example.seminar.dto.request.member.MemberProfileUpdateRequest;
 import com.example.seminar.dto.response.MemberGetResponse;
 import com.example.seminar.service.MemberService;
 import lombok.RequiredArgsConstructor;

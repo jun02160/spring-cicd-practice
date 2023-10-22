@@ -1,4 +1,4 @@
-package com.example.seminar.dto.request;
+package com.example.seminar.dto.request.member;
 
 
 import com.example.seminar.domain.SOPT;
