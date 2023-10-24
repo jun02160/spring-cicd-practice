@@ -1,6 +1,7 @@
 package com.example.seminar.service;
 
 
+import com.example.seminar.common.exception.BusinessException;
 import com.example.seminar.domain.Category;
 import com.example.seminar.domain.CategoryId;
 import com.example.seminar.repository.CategoryJpaRepository;
