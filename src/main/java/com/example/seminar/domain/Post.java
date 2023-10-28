@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "post")
-public class Post {
+public class Post extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long postId;
+    private Long id;
 
     private String title;
     private String content;
@@ -23,6 +23,7 @@ public class Post {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @Column(name = "category_id")
     private CategoryId categoryId;
 
     @Builder

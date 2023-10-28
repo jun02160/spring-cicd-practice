@@ -17,5 +17,6 @@ import static jakarta.persistence.EnumType.*;
 public class SOPT {
     private int generation;
 
+    @Enumerated(STRING)
     private Part part;
 }

@@ -1,7 +1,6 @@
 package com.example.seminar.dto.response.post;
 
 import com.example.seminar.domain.Category;
-import com.example.seminar.domain.CategoryId;
 import com.example.seminar.domain.Post;
 
 public record PostGetResponse(
@@ -12,7 +11,7 @@ public record PostGetResponse(
 ) {
     public static PostGetResponse of(Post post, Category category) {
         return new PostGetResponse(
-                post.getPostId(),
+                post.getId(),
                 post.getTitle(),
                 post.getContent(),
                 category.getContent()

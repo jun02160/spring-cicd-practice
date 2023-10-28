@@ -26,14 +26,14 @@ public class PostService {
     private final CategoryService categoryService;
 
     @Transactional
-    public String create(PostCreateRequest request) {
-        Member member = memberJpaRepository.findByIdOrThrow(request.memberId());
+    public String create(PostCreateRequest request, Long memberId) {
+        Member member = memberJpaRepository.findByIdOrThrow(memberId);
         Post post = postJpaRepository.save(
                 Post.builder()
                 .member(member)
                 .title(request.title())
                 .content(request.content()).build());
-        return post.getPostId().toString();
+        return post.getId().toString();
     }
 
     @Transactional
@@ -62,6 +62,6 @@ public class PostService {
     }
 
     private Category getCategoryByPost(Post post) {
-        return categoryService.getById(post.getCategoryId());
+        return categoryService.getByCategoryId(post.getCategoryId());
     }
 }

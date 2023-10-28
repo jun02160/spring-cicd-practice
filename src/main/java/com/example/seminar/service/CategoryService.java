@@ -4,6 +4,7 @@ package com.example.seminar.service;
 import com.example.seminar.common.exception.BusinessException;
 import com.example.seminar.domain.Category;
 import com.example.seminar.domain.CategoryId;
+import com.example.seminar.dto.response.category.CategoryResponse;
 import com.example.seminar.repository.CategoryJpaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,13 @@ public class CategoryService {
 
     private final CategoryJpaRepository categoryJpaRepository;
 
-    public Category getById(CategoryId categoryId) {
-        return categoryJpaRepository.findById(Short.valueOf(categoryId.getId())).orElseThrow(
+    public Category getByCategoryId(CategoryId categoryId) {
+        return categoryJpaRepository.findById(Short.valueOf(categoryId.getCategoryId())).orElseThrow(
                 () -> new EntityNotFoundException("해당하는 카테고리가 없습니다."));
+    }
+
+    public CategoryResponse getById(Short id) {
+        return CategoryResponse.of(categoryJpaRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("해당하는 카테고리가 없습니다.")));
     }
 }
