@@ -1,6 +1,8 @@
 name: CI
 
 on:  # 트리거 (언제 실행?)
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]  # 트리거를 감지할 브랜치명
 
