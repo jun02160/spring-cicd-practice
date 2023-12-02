@@ -64,4 +64,4 @@ jobs:
         script: |
           docker rm -f do-sopt-seminar
           docker image pull yejunpark1/do-sopt-seminar
-          docker run -d --name do-sopt-seminar -p 8080:8080 yejunpark1/do-sopt-seminar
+          docker run -d --name do-sopt-seminar-8080 -p 8080:8080 yejunpark1/do-sopt-seminar
